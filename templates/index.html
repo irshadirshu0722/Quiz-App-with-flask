@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Lord of the Rings Trivia</h1>
+    {% if not question_answered %}
+        <h2>Who said the following quote? </h2>
+        <h3> "{{ quote }}"</h3>
+        <form action="/" method="post">
+            {% for character in possible_characters %}
+                <input type="radio" id="character" name="character" value="{{character}}">
+                    <label for="character">{{character}}</label>
+                    <br>
+            {% endfor %}
+        <button type="submit" id="submitName">Submit</button>
+        </form>
+    {% else %}
+        {% if correct%}
+            <h2>Correct!</h2>
+        {% else %}
+            <h2>Incorrect.</h2>
+        {% endif%}
+        <form action="/" method="post">
+            <button type="submit" id="play_again">Play Again</button>
+        </form>
+    {% endif %}
+</body>
+</html>
